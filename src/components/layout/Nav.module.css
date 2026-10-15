@@ -1,0 +1,243 @@
+.nav {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  width: min(calc(100% - 24px), 960px);
+  height: var(--nav-h);
+  padding: 0 10px 0 16px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(251, 248, 240, 0.82);
+  backdrop-filter: blur(12px) saturate(1.2);
+  transform: translate(-50%, -140%);
+  transition:
+    transform 0.9s var(--ease-out),
+    box-shadow 0.4s;
+}
+
+.visible {
+  transform: translate(-50%, 0);
+}
+
+.scrolled {
+  box-shadow: 4px 4px 0 var(--royal);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.logoFlower {
+  transition: transform 0.8s var(--ease-spring);
+}
+
+.logo:hover .logoFlower {
+  transform: rotate(72deg) scale(1.1);
+}
+
+.desktop {
+  position: relative;
+  margin-inline: auto;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tab {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.25s,
+    background-color 0.25s;
+}
+
+.tab:hover {
+  color: var(--royal);
+  background: var(--sky-soft);
+}
+
+.tab[aria-current] {
+  color: var(--royal);
+  font-weight: 600;
+}
+
+.tilde {
+  opacity: 0.5;
+}
+
+.indicator {
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100px;
+  height: 2px;
+  background: var(--royal);
+  border-radius: 2px;
+  transform-origin: 0 50%;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--royal);
+  color: var(--paper);
+  white-space: nowrap;
+}
+
+.status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--sky);
+  box-shadow: 0 0 0 0 var(--sky);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 7px rgba(142, 195, 238, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(142, 195, 238, 0);
+  }
+}
+
+.menuBtn {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  padding: 10px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.burger {
+  display: grid;
+  gap: 4px;
+}
+
+.burger i {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.burgerOpen i:first-child {
+  transform: translateY(2.75px) rotate(45deg);
+}
+
+.burgerOpen i:last-child {
+  transform: translateY(-2.75px) rotate(-45deg);
+}
+
+/* mobile sheet */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: flex-end;
+  padding: calc(var(--nav-h) + 40px) var(--gutter) 48px;
+  background: var(--royal);
+  color: var(--paper);
+  overflow: hidden;
+  visibility: hidden;
+  clip-path: circle(0% at calc(100% - 60px) 46px);
+  transition:
+    clip-path 0.7s var(--ease-out),
+    visibility 0s linear 0.7s;
+}
+
+.sheetOpen {
+  visibility: visible;
+  clip-path: circle(150% at calc(100% - 60px) 46px);
+  transition:
+    clip-path 0.8s var(--ease-out),
+    visibility 0s;
+}
+
+.sheetList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheetList li {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+
+.sheetOpen .sheetList li {
+  opacity: 1;
+  transform: none;
+}
+
+.sheetList a {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(207, 230, 248, 0.25);
+}
+
+.sheetList .display {
+  font-size: clamp(2.1rem, 9vw, 3rem);
+}
+
+.sheetList a[aria-current] .display {
+  color: var(--sky);
+}
+
+.sheetList .mono {
+  color: var(--sky);
+}
+
+.sheetFlower {
+  position: absolute;
+  top: 90px;
+  right: -40px;
+  opacity: 0.9;
+  animation: spin 40s linear infinite;
+}
+
+@media (max-width: 960px) {
+  .desktop,
+  .status {
+    display: none;
+  }
+
+  .menuBtn {
+    display: inline-flex;
+  }
+}

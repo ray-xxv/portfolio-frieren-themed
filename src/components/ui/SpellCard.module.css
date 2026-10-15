@@ -1,0 +1,130 @@
+.wrap {
+  display: flex;
+}
+
+.card {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 16px 14px;
+  background: rgba(251, 248, 240, 0.9);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out),
+    background-color 0.3s;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: auto -30% -60% auto;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sky-soft), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-6px) rotate(-0.6deg);
+  box-shadow: 6px 6px 0 var(--royal);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-soft);
+}
+
+.school {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--royal);
+  color: var(--paper);
+  text-transform: uppercase;
+  font-size: 0.66rem;
+}
+
+.card[data-school='defensive'] .school {
+  background: var(--royal-deep);
+}
+
+.card[data-school='utility'] .school {
+  background: var(--sky);
+  color: var(--ink);
+}
+
+.name {
+  position: relative;
+  margin: 4px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.lore {
+  position: relative;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.mastery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mastery .mono {
+  margin-left: 6px;
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+}
+
+.incant {
+  position: relative;
+  display: block;
+  margin-top: auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--sky-soft);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.incant span {
+  color: var(--sky);
+}
+
+.corner {
+  position: absolute;
+  top: 34px;
+  right: 14px;
+  opacity: 0.35;
+  transition:
+    transform 0.8s var(--ease-spring),
+    opacity 0.4s;
+}
+
+.card:hover .corner {
+  transform: rotate(135deg) scale(1.2);
+  opacity: 1;
+}

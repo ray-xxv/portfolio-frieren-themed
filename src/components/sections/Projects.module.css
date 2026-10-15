@@ -1,0 +1,149 @@
+.projects {
+  position: relative;
+  padding-block: clamp(96px, 12vw, 140px) clamp(72px, 8vw, 100px);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 50% at 85% 20%, rgba(207, 230, 248, 0.7), transparent 70%),
+    radial-gradient(40% 40% at 10% 90%, rgba(207, 230, 248, 0.5), transparent 70%);
+}
+
+.decor .s1 {
+  position: absolute;
+  top: 14%;
+  right: 12%;
+  animation: twinkle 4.2s ease-in-out infinite;
+}
+
+.decor .s2 {
+  position: absolute;
+  bottom: 12%;
+  left: 40%;
+  animation: twinkle 3.4s ease-in-out infinite 0.8s;
+}
+
+.intro {
+  flex: none;
+  align-self: center;
+  width: clamp(280px, 28vw, 390px);
+}
+
+.intro header {
+  margin-bottom: 24px;
+}
+
+.lede {
+  margin: 0 0 32px;
+  max-width: 24rem;
+  color: var(--ink-soft);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--royal);
+}
+
+.barTrack {
+  position: relative;
+  flex: 1;
+  max-width: 260px;
+  height: 2px;
+  background: rgba(31, 59, 214, 0.18);
+  overflow: hidden;
+}
+
+.bar {
+  position: absolute;
+  inset: 0;
+  background: var(--royal);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.viewport {
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(48px, 5vw, 80px);
+  width: max-content;
+  padding: 40px max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))) 20px;
+}
+
+.end {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  width: clamp(240px, 20vw, 290px);
+  min-height: 360px;
+  padding: 32px;
+  border: 1.5px dashed var(--royal);
+  border-radius: 20px;
+  flex: none;
+}
+
+.end .display {
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+}
+
+.endFlower {
+  position: absolute;
+  top: -50px;
+  right: -40px;
+  animation: spin 30s linear infinite;
+}
+
+.endLeaf {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+}
+
+@media (max-width: 960px) {
+  .progress {
+    display: none;
+  }
+
+  .track {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 72px 40px;
+    width: 100%;
+    max-width: var(--maxw);
+    margin-inline: auto;
+    padding: 40px var(--gutter) 0;
+  }
+
+  .track > * {
+    width: auto;
+  }
+
+  .intro {
+    grid-column: 1 / -1;
+    width: auto;
+  }
+
+  .end {
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) and (min-width: 961px) {
+  .progress {
+    display: none;
+  }
+
+  .viewport {
+    overflow-x: auto;
+    padding-block: 48px 12px;
+  }
+}

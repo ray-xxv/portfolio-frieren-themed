@@ -1,0 +1,81 @@
+.term {
+  position: relative;
+  background: rgba(251, 248, 240, 0.92);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 var(--royal), var(--shadow-paper);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--sky-soft);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  background: var(--paper);
+}
+
+.dots i:first-child {
+  background: var(--royal);
+}
+
+.title {
+  color: var(--ink-soft);
+}
+
+.body {
+  padding: 14px 16px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  line-height: 1.75;
+  min-height: 11em;
+  color: var(--ink);
+}
+
+.line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.prompt {
+  color: var(--royal);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.ok {
+  color: var(--royal-deep);
+}
+
+.accent {
+  color: var(--royal);
+  font-weight: 600;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.2em;
+  background: var(--royal);
+  animation: blink 1s steps(1) infinite;
+}

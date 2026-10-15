@@ -1,0 +1,22 @@
+.meadow {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+}
+
+.sprig {
+  position: absolute;
+  bottom: 0;
+  transform-origin: 50% 100%;
+  animation: sway 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.back {
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.sprig:not(.back) {
+  z-index: 1;
+}

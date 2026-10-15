@@ -1,0 +1,84 @@
+/*
+ * Zero-height in the document flow: it overlaps the bottom 45% of the hero and
+ * the top of the grimoire (negative margins cancel its own height).
+ */
+.bridge {
+  position: relative;
+  z-index: 1;
+  height: 100svh;
+  margin-top: -45svh;
+  margin-bottom: -55svh;
+  pointer-events: none;
+  overflow-x: clip;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+/* a soft sky glow where the two sections meet */
+.wash {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 30%;
+  height: 34%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(207, 230, 248, 0.75), rgba(207, 230, 248, 0) 70%);
+}
+
+.cue {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+  margin: 26px 0 0 30px;
+  white-space: nowrap;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--royal);
+  color: var(--ink);
+  transform: rotate(-2deg);
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--royal);
+  color: var(--paper);
+  animation: nudge 1.6s ease-in-out infinite;
+}
+
+.next {
+  padding-left: 8px;
+  border-left: 1px solid rgba(15, 22, 51, 0.25);
+  color: var(--royal);
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 719px) {
+  .bridge {
+    height: 80svh;
+    margin-top: -30svh;
+    margin-bottom: -50svh;
+  }
+
+  .cue {
+    margin: 22px 0 0 -40px;
+  }
+
+  .next {
+    display: none;
+  }
+}

@@ -1,0 +1,129 @@
+.card {
+  position: relative;
+  margin: 0;
+  padding: 22px 22px 24px;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lift);
+  transform: rotate(-2.5deg);
+  color: var(--ink);
+}
+
+.tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 110px;
+  height: 28px;
+  margin-left: -55px;
+  background: rgba(142, 195, 238, 0.55);
+  border-left: 2px dashed rgba(255, 255, 255, 0.6);
+  border-right: 2px dashed rgba(255, 255, 255, 0.6);
+  transform: rotate(3deg);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1.5px solid var(--ink);
+  color: var(--royal-deep);
+}
+
+.rows {
+  margin: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  align-items: baseline;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(15, 22, 51, 0.15);
+}
+
+.row dt {
+  color: var(--ink-soft);
+}
+
+.row dd {
+  margin: 0;
+}
+
+.value {
+  font-size: 1.28rem;
+  line-height: 1.2;
+  color: var(--royal);
+  display: inline-block;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin: 20px 0;
+  padding: 14px 0;
+  list-style: none;
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.checks li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.box {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  overflow: visible;
+  color: var(--ink);
+}
+
+.desc ol {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.desc li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 2px 0;
+  border-bottom: 1px dashed rgba(15, 22, 51, 0.2);
+}
+
+.desc .mono {
+  color: var(--ink-soft);
+}
+
+.pressed {
+  position: absolute;
+  right: -34px;
+  bottom: -40px;
+  pointer-events: none;
+}
+
+.pressedLeaf {
+  position: absolute;
+  left: -30px;
+  top: -18px;
+}
+
+@media (max-width: 520px) {
+  .checks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pressed {
+    right: -10px;
+    bottom: -50px;
+    transform: scale(0.75);
+  }
+}

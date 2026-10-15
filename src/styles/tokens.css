@@ -1,0 +1,43 @@
+:root {
+  /* palette — royal blue · sky blue · cream */
+  --cream: #f5f0e3;
+  --paper: #fbf8f0;
+  --paper-shade: #ece5d3;
+  --royal: #1f3bd6;
+  --royal-deep: #12238a;
+  --royal-ink: #0b1660;
+  --sky: #8ec3ee;
+  --sky-mid: #5f9be6;
+  --sky-soft: #cfe6f8;
+  --ink: #0f1633;
+  --ink-soft: #3a4366;
+  --night: #0c1230;
+  --grid: rgba(31, 59, 214, 0.075);
+
+  /* type */
+  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', monospace;
+  --font-hand: 'Caveat', 'Segoe Print', cursive;
+  --font-jp: 'Shippori Mincho', 'Yu Mincho', serif;
+
+  --fs-display: clamp(2.4rem, min(5.4vw, 10.5vh), 5.25rem);
+  --fs-h2: clamp(2rem, min(3.9vw, 8vh), 3.6rem);
+  --fs-h3: clamp(1.25rem, 1.6vw, 1.55rem);
+  --fs-body: clamp(0.95rem, 0.92rem + 0.1vw, 1.0625rem);
+  --fs-mono: 0.75rem;
+
+  /* layout */
+  --gutter: clamp(16px, 3.5vw, 48px);
+  --maxw: 1180px;
+  --radius: 12px;
+  --nav-h: 54px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* depth */
+  --shadow-paper: 0 1px 0 rgba(15, 22, 51, 0.06), 0 18px 40px -18px rgba(18, 35, 138, 0.35);
+  --shadow-lift: 0 2px 0 rgba(15, 22, 51, 0.06), 0 30px 60px -20px rgba(18, 35, 138, 0.45);
+}

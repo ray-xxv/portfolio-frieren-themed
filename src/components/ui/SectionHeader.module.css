@@ -1,0 +1,49 @@
+.head {
+  position: relative;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.comment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 1.2rem;
+  color: var(--royal);
+  text-transform: lowercase;
+}
+
+.file {
+  padding: 0.15em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+}
+
+.aside {
+  margin-left: auto;
+  color: var(--ink-soft);
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.line {
+  display: block;
+}
+
+.night .comment {
+  color: var(--sky);
+}
+
+.night .aside {
+  color: rgba(207, 230, 248, 0.7);
+}
+
+.night .title {
+  color: var(--cream);
+}
+
+.night .title em {
+  color: var(--sky);
+}

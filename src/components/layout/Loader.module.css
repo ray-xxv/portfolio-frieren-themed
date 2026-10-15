@@ -1,0 +1,48 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border-bottom: 2px solid var(--royal);
+}
+
+.stage {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+}
+
+.mark {
+  width: clamp(110px, 16vw, 150px);
+  overflow: visible;
+}
+
+.casting {
+  margin: 0;
+  color: var(--royal);
+}
+
+.corner {
+  position: absolute;
+  top: var(--gutter);
+  left: var(--gutter);
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.count {
+  position: absolute;
+  right: var(--gutter);
+  bottom: calc(var(--gutter) * 0.6);
+  margin: 0;
+  font-size: clamp(3.2rem, 9vw, 6.5rem);
+  color: var(--royal);
+  font-variant-numeric: tabular-nums;
+}
