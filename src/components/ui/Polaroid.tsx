@@ -23,7 +23,16 @@ export function Polaroid({ project, index, total }: Props) {
       <div className={styles.photoFrame}>
         <span className={styles.tape} aria-hidden="true" />
         <div className={styles.photo}>
-          {project.image ? <img src={project.image} alt={`${project.title} screenshot`} loading="lazy" /> : <ProjectCover index={index} title={project.title} />}
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              loading="lazy"
+              style={project.imagePosition ? { objectPosition: project.imagePosition, ['--img-origin' as string]: project.imagePosition } : undefined}
+            />
+          ) : (
+            <ProjectCover index={index} title={project.title} />
+          )}
         </div>
         <p className={`hand ${styles.caption}`}>{project.caption}</p>
       </div>

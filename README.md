@@ -18,7 +18,7 @@ npm run preview   # serve the build
 All copy lives in **`src/data/content.ts`**: name, headline, bio, field notes, skills ("spells"), projects, experience, contact links. Components only read from it.
 
 - Wrap a word in `*asterisks*` in any title to give it the royal-blue accent.
-- Project screenshots: put an image in `public/projects/` and set `image: 'projects/name.png'`. It gets a royal-blue duotone automatically. Without one, a generated cover is drawn.
+- Project screenshots: put an image in `public/projects/` and set `image: 'projects/name.png'`. It fills a 16:10 frame, cropped from the top; set `imagePosition` (e.g. `'left top'`) to choose what stays visible. Without one, a generated cover is drawn.
 - Resume: drop `resume.pdf` into `public/`.
 - Colours, fonts and spacing are tokens in `src/styles/tokens.css`.
 - Update `<title>` / meta tags in `index.html`. Add an `og:image` (1200×630 PNG in `public/`) for link previews.

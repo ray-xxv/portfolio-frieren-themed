@@ -26,8 +26,10 @@ export interface Project {
   stack: string[];
   repo?: string;
   live?: string;
-  /** Optional screenshot in /public (e.g. "projects/atlas.png"). Gets a royal-blue duotone. */
+  /** Optional screenshot in /public (e.g. "projects/atlas.png"). Cropped to fill a 16:10 frame. */
   image?: string;
+  /** Which part of the screenshot stays visible when cropped (CSS object-position). Defaults to "center top". */
+  imagePosition?: string;
   /** Handwritten caption on the polaroid. */
   caption: string;
 }
@@ -165,23 +167,26 @@ export const spells: Spell[] = [
 
 export const projects: Project[] = [
   {
-    title: "Grimoire",
+    title: "BulSU-Nav",
     year: "2026",
     summary:
       "A markdown knowledge base with instant search and backlinks — a spellbook for engineering teams.",
-    stack: ["React", "TypeScript", "SQLite", "Tauri"],
+    stack: ["React", "TypeScript", "Postgres"],
     repo: "https://github.com/your-handle/grimoire",
     live: "https://example.com",
-    caption: "the spellbook",
+    image: "projects/Screenshot 2026-10-15 205141.png",
+    imagePosition: "left top",
+    caption: "find your party",
   },
   {
-    title: "Blue Moon",
+    title: "StockSandBox",
     year: "2025",
     summary:
-      "Real-time garden sensor dashboard. Streams soil and light data, and blooms an alert when plants need care.",
+      "A market-replay simulator. Pick any moment in market history, hide everything that came after, and trade with $100,000 in virtual cash. Then see whether you beat simply buying and holding.",
     stack: ["Next.js", "WebSockets", "Postgres"],
     repo: "https://github.com/your-handle/blue-moon",
-    caption: "field data, live",
+    image: "projects/Screenshot 2026-10-15 205211.png",
+    caption: "explore possibilities",
   },
   {
     title: "Zoltraak CLI",
