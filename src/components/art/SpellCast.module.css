@@ -1,0 +1,65 @@
+.cast {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dayLayer,
+.night {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 18px;
+}
+
+/* night spreads from the centre; GSAP animates this clip-path */
+.night {
+  background: var(--night);
+  clip-path: circle(0% at 50% 50%);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(38% 38% at 50% 50%, rgba(31, 59, 214, 0.5), transparent 70%);
+}
+
+.circle {
+  position: relative;
+  width: min(78vw, 72svh);
+  height: auto;
+  overflow: visible;
+}
+
+.caption {
+  position: relative;
+  margin: 0;
+  color: var(--royal);
+  letter-spacing: 0.12em;
+}
+
+.night .caption {
+  color: var(--sky);
+}
+
+.caption span {
+  display: inline-block;
+}
+
+/* reduced motion: show the finished spell on night, so the seam into Journey stays clean */
+.static .night {
+  clip-path: none;
+}
+
+@media (max-width: 960px) {
+  .cast {
+    height: 90svh;
+  }
+
+  .circle {
+    width: min(88vw, 60svh);
+  }
+}

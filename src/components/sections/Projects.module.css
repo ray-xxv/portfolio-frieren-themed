@@ -1,13 +1,14 @@
 .projects {
   position: relative;
-  padding-block: clamp(96px, 12vw, 140px) clamp(72px, 8vw, 100px);
+  /* generous bottom room so the cards never sit on the screen edge while the gallery is pinned */
+  padding-block: clamp(80px, 10vh, 120px) clamp(110px, 15vh, 170px);
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
   background:
     radial-gradient(60% 50% at 85% 20%, rgba(207, 230, 248, 0.7), transparent 70%),
-    radial-gradient(40% 40% at 10% 90%, rgba(207, 230, 248, 0.5), transparent 70%);
+    radial-gradient(32% 30% at 8% 58%, rgba(207, 230, 248, 0.5), transparent 70%);
 }
 
 .decor .s1 {
@@ -73,7 +74,7 @@
   align-items: flex-start;
   gap: clamp(48px, 5vw, 80px);
   width: max-content;
-  padding: 40px max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))) 20px;
+  padding: 32px max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))) 48px;
 }
 
 .end {

@@ -5,18 +5,21 @@ import styles from './Polaroid.module.css';
 interface Props {
   project: Project;
   index: number;
+  total: number;
 }
 
 const tilts = [-3, 2.5, -1.5, 3, -2.5, 1.5];
 
 /** A project as a taped polaroid with its field notes underneath. */
-export function Polaroid({ project, index }: Props) {
+export function Polaroid({ project, index, total }: Props) {
   const n = String(index + 1).padStart(2, '0');
   return (
     <article className={`project-card ${styles.card}`} style={{ ['--tilt' as string]: `${tilts[index % tilts.length]}deg` }} aria-labelledby={`project-${index}`}>
-      <span className={styles.index} aria-hidden="true">
-        {n}
-      </span>
+      <div className={styles.number} aria-hidden="true">
+        <span className={styles.big}>{n}</span>
+        <span className={`mono ${styles.of}`}>/ {String(total).padStart(2, '0')}</span>
+        <span className={styles.rule} />
+      </div>
       <div className={styles.photoFrame}>
         <span className={styles.tape} aria-hidden="true" />
         <div className={styles.photo}>

@@ -4,7 +4,7 @@ import { useReveal } from '../../hooks/useReveal';
 import { journey } from '../../data/content';
 import { SectionHeader } from '../ui/SectionHeader';
 import { BlueMoonWeed } from '../art/BlueMoonWeed';
-import { Bird, CheckerBand, Orbit } from '../art/Decor';
+import { Bird, Orbit } from '../art/Decor';
 import { Sparkle } from '../art/Sparkle';
 import { PetalField } from '../art/PetalField';
 import styles from './Experience.module.css';
@@ -86,7 +86,7 @@ export function Experience({ reduced }: { reduced: boolean }) {
 
   return (
     <section id="journey" ref={root} className={styles.journey} aria-labelledby="journey-title">
-      <CheckerBand />
+      {/* no top border: the SpellCast transition above already arrives in night */}
 
       <div className={styles.sky} aria-hidden="true">
         <Orbit className={styles.orbit} color="var(--sky)" rings={3} />
@@ -153,7 +153,8 @@ export function Experience({ reduced }: { reduced: boolean }) {
         </ol>
       </div>
 
-      <CheckerBand reverse />
+      {/* night dissolves into the cream grid paper of the contact section */}
+      <div className={styles.fadeOut} aria-hidden="true" />
     </section>
   );
 }

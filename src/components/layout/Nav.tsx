@@ -14,26 +14,47 @@ export function Nav({ visible }: { visible: boolean }) {
   const list = useRef<HTMLUListElement>(null);
   const indicator = useRef<HTMLSpanElement>(null);
 
-  // Track which section is crossing the middle of the viewport.
+  // Active tab = the last section whose top has passed 40% of the viewport.
+  // Elements with data-nav="<id>" (e.g. the spell-cast transition) count as the start of that section,
+  // and reaching the bottom of the page always selects the last tab.
   useEffect(() => {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id as Id);
-        });
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    );
-    nav.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 40);
+      const doc = document.documentElement;
+      if (window.scrollY + window.innerHeight >= doc.scrollHeight - 4) {
+        setActive(nav[nav.length - 1].id);
+        return;
+      }
+      const line = window.innerHeight * 0.4;
+      let current: Id = nav[0].id;
+      const markers = nav.flatMap(({ id }) => [
+        document.getElementById(id),
+        ...Array.from(document.querySelectorAll<HTMLElement>(`[data-nav="${id}"]`)),
+      ]);
+      let best = -Infinity;
+      markers.forEach((el) => {
+        if (!el) return;
+        const top = el.getBoundingClientRect().top;
+        const id = (el.dataset.nav ?? el.id) as Id;
+        if (top <= line && top > best) {
+          best = top;
+          current = id;
+        }
+      });
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     return () => {
-      io.disconnect();
+      cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
 

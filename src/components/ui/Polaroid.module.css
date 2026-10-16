@@ -7,23 +7,41 @@
   flex: none;
 }
 
-.index {
-  position: absolute;
-  top: -0.42em;
-  right: -0.08em;
-  z-index: -1;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(4.5rem, 8vw, 7rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--royal);
-  pointer-events: none;
-  transition: color 0.5s;
+/* project number: solid royal with an offset sky "print" shadow, like the 06 on the poster */
+.number {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: -4px;
 }
 
-.card:hover .index {
-  color: var(--sky-soft);
+.big {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(3.4rem, 5vw, 4.6rem);
+  line-height: 0.8;
+  color: var(--royal);
+  text-shadow: 4px 4px 0 var(--sky);
+  transition:
+    transform 0.5s var(--ease-spring),
+    text-shadow 0.5s var(--ease-out);
+}
+
+.card:hover .big {
+  transform: translateY(-4px) rotate(-3deg);
+  text-shadow: 6px 6px 0 var(--sky);
+}
+
+.of {
+  padding-bottom: 4px;
+  color: var(--ink-soft);
+}
+
+.rule {
+  flex: 1;
+  height: 1.5px;
+  margin-bottom: 9px;
+  background: linear-gradient(90deg, var(--royal), transparent);
 }
 
 .photoFrame {

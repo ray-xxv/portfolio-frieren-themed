@@ -1,5 +1,8 @@
 .journey {
+  --fade: clamp(280px, 45vh, 480px);
   position: relative;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), rgba(0, 0, 0, 0.55) calc(100% - var(--fade) * 0.55), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade)), rgba(0, 0, 0, 0.55) calc(100% - var(--fade) * 0.55), transparent);
   color: var(--cream);
   background:
     radial-gradient(50% 40% at 80% 18%, rgba(31, 59, 214, 0.55), transparent 70%),
@@ -7,6 +10,38 @@
     var(--night);
   overflow: hidden;
   isolation: isolate;
+}
+
+/* fade the glows in from plain night so the seam with the SpellCast transition disappears */
+.journey::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 520px;
+  z-index: -1;
+  background: linear-gradient(var(--night) 15%, rgba(12, 18, 48, 0));
+  pointer-events: none;
+}
+
+/*
+ * Journey → Contact: the bottom of the whole section (background, stars, petals) is masked
+ * out to transparent, revealing the page's own cream grid paper underneath — the same
+ * surface the contact section is drawn on, so there is no seam to see.
+ */
+/* tint the fade so it passes through royal and sky blue rather than muddy grey */
+.journey::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--fade);
+  z-index: -1;
+  background: linear-gradient(to bottom, rgba(12, 18, 48, 0), rgba(31, 59, 214, 0.55) 40%, rgba(142, 195, 238, 0.85) 80%, rgba(207, 230, 248, 0.9));
+  pointer-events: none;
+}
+
+.fadeOut {
+  height: var(--fade);
+  pointer-events: none;
 }
 
 /* ── sky layer ──────────────────────────────── */
@@ -56,7 +91,7 @@
 
 .ribbon {
   position: absolute;
-  top: 120px;
+  top: 28px;
   left: 0;
   width: 100%;
   height: 120px;
@@ -66,7 +101,7 @@
 
 .inner {
   position: relative;
-  padding-block: clamp(120px, 13vw, 170px) clamp(80px, 10vw, 130px);
+  padding-block: clamp(150px, 15vw, 190px) clamp(80px, 10vw, 130px);
 }
 
 /* ── timeline ───────────────────────────────── */
@@ -196,6 +231,6 @@
   }
 
   .ribbon {
-    top: 90px;
+    top: 16px;
   }
 }

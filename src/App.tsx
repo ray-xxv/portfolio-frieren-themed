@@ -10,6 +10,7 @@ import { Cursor } from './components/layout/Cursor';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/sections/Hero';
 import { VineBridge } from './components/art/VineBridge';
+import { SpellCast } from './components/art/SpellCast';
 import { About } from './components/sections/About';
 import { Projects } from './components/sections/Projects';
 import { Experience } from './components/sections/Experience';
@@ -80,6 +81,7 @@ export function App() {
         <VineBridge cast={cast} reduced={reduced} />
         <About reduced={reduced} />
         <Projects reduced={reduced} />
+        <SpellCast reduced={reduced} />
         <Experience reduced={reduced} />
         <Contact reduced={reduced} />
       </main>

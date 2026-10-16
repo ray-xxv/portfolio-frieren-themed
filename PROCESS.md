@@ -351,3 +351,30 @@ Feedback after the first version: everything felt **too large** in a real browse
 - Screenshots at 1440×900, 1536×730 (a short laptop screen) and 390×844, plus reduced motion.
 - No console errors and no sideways overflow.
 - One fix came from this round: on the short screen, the vine first reached up to the CTA buttons. Its hero stretch now hugs the bottom ~14% of the screen, with blooms hanging downward.
+
+---
+
+## 12. Revision 3: project numbers and the spell-cast transition
+
+- **Project numbers:** each polaroid now has a header row above the frame instead of a faint outlined number hidden behind the photo. The row holds a solid royal italic `01` with an offset sky-blue "print" shadow (like the `06` on the 実験体δ poster), `/ 06`, and a fading rule. On hover the number lifts and tilts.
+- **Breathing room:** the pinned gallery has about 15% of the screen height free below the cards, so they never sit on the bottom edge while you scroll sideways.
+- **The spell-cast transition** (`components/art/SpellCast.tsx`) sits between Projects and Journey. It shows a magic circle made of tick marks, rings, an {8/3} octagram over a hexagram, a ring of code "runes" (`const journey = await cast(spell) ✦ …`), eight nodes, and a Blue-Moon Weed inside a sparkle at its centre.
+  1. While the circle scrolls into view, its rings begin to draw.
+  2. On desktop the section **pins**. That makes two pinned sections, which is the most the design guidelines recommend. While pinned:
+     - the circle finishes drawing and the runes appear;
+     - the centre flower blooms;
+     - a shockwave pulses;
+     - **night spreads from the centre** using an expanding `clip-path` circle.
+  3. The circle exists twice: royal ink on cream, and sky light on night. The night copy sits inside the expanding clip, so the lines appear to *invert* as the spell washes over them.
+  4. When it unpins, the screen is already fully night, so the Journey section simply continues. Its top checker band was removed, and a gradient fades its glows in from plain night, so there's no visible seam.
+- **Reduced motion:** the circle is shown already cast, on night.
+
+---
+
+## 13. Revision 4: nav tracking and the Journey fade
+
+- **Nav highlighting bug:**
+  - *Cause:* the nav used an `IntersectionObserver` that only fired when a section crossed a thin band in the middle of the screen. While the pinned spell-cast scene played, no section was in that band, so the nav stayed on `projects/`. Near the bottom of the page, Contact could miss the band entirely.
+  - *Fix:* on each scroll frame, the active tab is now the last section whose top has passed 40% of the viewport. Extra elements can join a section with `data-nav="<id>"`; the spell-cast scene uses `data-nav="journey"`. Reaching the bottom of the page always selects the last tab.
+  - *Check:* verified in the browser at nine points down the page.
+- **Journey → Contact fade:** the bottom checker band was removed. Instead, the bottom of the Journey section (background, stars, petals) is masked to transparent, revealing the page's own cream grid paper underneath, which is the same surface Contact is drawn on. A royal-to-sky tint over the fade keeps the in-between colours blue rather than grey.
