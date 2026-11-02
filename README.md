@@ -18,8 +18,6 @@ Hi, I'm Nathan. I'm an IT student at Bulacan State University, from Bulacan, Phi
 
 **7. Polishing.** After seeing it in a real browser, everything felt too big, so I scaled down the text and spacing. I also added vines connecting the first two sections and fixed a bug where the nav highlighted the wrong tab.
 
-If you want the full details, they're in
-
 ## Running it
 
 ```bash
