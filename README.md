@@ -1,48 +1,34 @@
-# 蒼月草 — a Frieren-themed developer portfolio
+# 蒼月草
 
-An animated, single-page portfolio in royal blue, sky blue and cream. Blue-Moon Weed flowers, leaves and sparkles, plus a code-flavoured UI (file-tab nav, terminal "spells", a grimoire of skills).
+**Live site:** [ray-xxv.github.io/portfolio-frieren-themed](https://ray-xxv.github.io/portfolio-frieren-themed/)
 
-Built with **Vite + React + TypeScript**, **GSAP** (ScrollTrigger, SplitText, DrawSVG) and **Lenis** smooth scrolling. All art is hand-built SVG/canvas, so no copyrighted artwork ships with the site.
+## About me
 
-## Run it
+Hi, I'm Nathan. I'm an IT student at Bulacan State University, from Bulacan, Philippines. I mostly build full-stack web apps with React, TypeScript and Node.js. This is my portfolio, and since I'm a big fan of Frieren, I based the whole design on it.
+
+## How I made it
+
+**1. Setting up the project.** I used Vite, React and TypeScript. For animation I used GSAP, and Lenis for smooth scrolling. I put all the text in one file (`src/data/content.ts`) so I can update my info without touching the components.
+
+**2. Drawing the art.** All the flowers, leaves and sparkles are made with SVG and canvas instead of images. That keeps the site light, lets me animate everything.
+
+**5. Animating it.** Headings slide in as you scroll, the flower stems draw themselves and bloom, the project cards scroll sideways, and a spell circle turns the page to night before the Journey section.
+
+**6. Testing and fixing.** I took screenshots at desktop, tablet and phone sizes to catch layout problems, and fixed things like petals covering the headline and animations fighting each other. I also made sure the site works with "reduced motion" turned on, where the animations switch off and the flowers just appear already bloomed.
+
+**7. Polishing.** After seeing it in a real browser, everything felt too big, so I scaled down the text and spacing. I also added vines connecting the first two sections and fixed a bug where the nav highlighted the wrong tab.
+
+If you want the full details, they're in
+
+## Running it
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # type-check + production build → dist/
-npm run preview   # serve the build
+npm run dev
 ```
 
-## Make it yours
+## Contact
 
-All copy lives in **`src/data/content.ts`**: name, headline, bio, field notes, skills ("spells"), projects, experience, contact links. Components only read from it.
-
-- Wrap a word in `*asterisks*` in any title to give it the royal-blue accent.
-- Project screenshots: put an image in `public/projects/` and set `image: 'projects/name.png'`. It fills a 16:10 frame, cropped from the top; set `imagePosition` (e.g. `'left top'`) to choose what stays visible. Without one, a generated cover is drawn.
-- Resume: drop `resume.pdf` into `public/`.
-- Colours, fonts and spacing are tokens in `src/styles/tokens.css`.
-- Update `<title>` / meta tags in `index.html`. Add an `og:image` (1200×630 PNG in `public/`) for link previews.
-
-## Structure
-
-```
-src/
-  data/content.ts          all text content
-  components/art/          BlueMoonWeed, Leaf, Meadow (growing stems), PetalField (canvas), Sparkle, Orbit, Decor
-  components/layout/       Loader, Nav, Cursor, Footer
-  components/ui/           Terminal, SectionHeader, FieldNotes, SpellCard, Polaroid, ProjectCover
-  components/sections/     Hero, About (grimoire), Projects, Experience (journey), Contact
-  hooks/                   useLenis, useReveal, usePrefersReducedMotion, useMediaQuery
-  lib/                     gsap setup, smooth-scroll helpers, seeded random
-```
-
-## Motion & accessibility
-
-- The intro loader plays once per browser session.
-- `prefers-reduced-motion` turns off smooth scrolling, particles, pinning and the loader. Flowers render already in bloom, and terminals print instantly.
-- Particles pause when off-screen or when the tab is hidden.
-- Includes a skip link, real headings and landmarks, visible focus rings, and screen-reader text for the terminal transcripts. Decorative art is `aria-hidden`.
-
-## Deploy
-
-`vite.config.ts` uses `base: './'`, so `dist/` works on Vercel, Netlify or a GitHub Pages sub-path. Upload `dist/` or connect the repo.
+- Email: marqueznathanreigh@gmail.com
+- GitHub: [ray-xxv](https://github.com/ray-xxv)
+- LinkedIn: [nathan-reigh-marquez](https://linkedin.com/in/nathan-reigh-marquez/)
